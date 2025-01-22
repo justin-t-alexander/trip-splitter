@@ -28,6 +28,7 @@ def add_trip():
         'cost': float(data['cost'])
     }
     trips.append(trip)
+    
     return jsonify(trip), 201
 
 if __name__ == '__main__':
