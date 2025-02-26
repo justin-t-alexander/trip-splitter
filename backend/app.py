@@ -25,7 +25,7 @@ def add_trip():
     if not data or 'name' not in data or 'cost' not in data or 'participants' not in data:
         return jsonify({'error': 'Invalid input'}), 400
     
-    split_type = data.get('splitType', 'equal')  # ✅ Match frontend key name
+    split_type = data.get('splitType', 'equal')  # Match frontend key name
     participants = data['participants']
     total_cost = float(data['cost'])
     contributions = {}
@@ -38,7 +38,7 @@ def add_trip():
             paid_status[participant] = False # Default to unpaid
     
     elif split_type == 'percentage':
-        percentages = data.get('percentages', {})  # ✅ Get as a dictionary
+        percentages = data.get('percentages', {})  #  Get as a dictionary
         total_percent = sum(percentages.values())
 
         if total_percent != 100:
@@ -59,7 +59,7 @@ def add_trip():
         'name': data['name'],
         'cost': total_cost,
         'participants': participants,
-        'splitType': split_type,  # ✅ Consistent key naming
+        'splitType': split_type,  #  Consistent key naming
         'percentages': data.get('percentages', {}),
         'contributions': contributions,
         'paid_status': paid_status # Track payments
